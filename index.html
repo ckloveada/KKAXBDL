@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KKA Kelas X — Pengenalan Algoritma, AI & Python</title>
+<style>
+:root{
+  --bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#637083;--primary:#315efb;
+  --primary2:#1d4ed8;--border:#e3e8f1;--code:#111827;--good:#16834b;--warn:#a56600;
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{background:linear-gradient(135deg,#172554,#315efb);color:#fff;padding:48px 24px 38px}
+.hero{max-width:1180px;margin:auto}
+.hero h1{font-size:clamp(30px,5vw,52px);line-height:1.1;margin:0 0 12px}
+.hero p{max-width:820px;font-size:18px;opacity:.92}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.badge{background:rgba(255,255,255,.14);padding:5px 11px;border-radius:999px;font-size:13px}
+.layout{max-width:1250px;margin:24px auto;display:grid;grid-template-columns:260px 1fr;gap:24px;padding:0 18px}
+nav{position:sticky;top:18px;height:max-content;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px;box-shadow:0 8px 30px #1725540d}
+nav strong{display:block;padding:8px 10px}.navlink{display:block;text-decoration:none;color:var(--muted);padding:7px 10px;border-radius:9px;font-size:14px}
+.navlink:hover{background:#eef2ff;color:var(--primary)}
+main{min-width:0}.section{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;margin-bottom:22px;box-shadow:0 8px 30px #17255408}
+h2{margin-top:0;font-size:28px;border-bottom:1px solid var(--border);padding-bottom:10px}
+h3{font-size:21px;margin-top:26px}.lead{font-size:17px;color:#334155}
+.callout{padding:16px 18px;border-left:4px solid var(--primary);background:#eef2ff;border-radius:10px;margin:16px 0}
+.tip{border-left-color:#16834b;background:#ecfdf5}.warning{border-left-color:#d97706;background:#fffbeb}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{border:1px solid var(--border);border-radius:13px;padding:17px;background:#fff}
+.card h4{margin:0 0 5px}.small{font-size:14px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}th,td{border:1px solid var(--border);padding:10px;text-align:left;vertical-align:top}th{background:#f1f5f9}
+code,.inline{font-family:Consolas,monospace}.inline{background:#eef2ff;padding:2px 5px;border-radius:4px}
+pre{background:var(--code);color:#e5e7eb;border-radius:12px;padding:18px;overflow:auto;position:relative}
+.copy{position:absolute;right:10px;top:10px;border:0;background:#374151;color:#fff;padding:6px 9px;border-radius:7px;cursor:pointer}
+.flow{display:flex;flex-direction:column;align-items:center;gap:8px;margin:20px auto;max-width:440px}
+.flow .node{width:100%;text-align:center;padding:10px 16px;border:2px solid #315efb;background:#eef2ff}
+.flow .start{border-radius:50px}.flow .process{border-radius:5px}.flow .io{transform:skew(-12deg);margin:0 15px}.flow .decision{transform:rotate(45deg);width:110px;height:110px;display:flex;align-items:center;justify-content:center}.flow .decision span{transform:rotate(-45deg);font-size:13px}.arrow{font-size:22px;color:#64748b}
+.quiz{border:1px solid var(--border);padding:15px;border-radius:12px;margin:12px 0}.quiz label{display:block;padding:5px}.result{font-weight:700;margin-top:10px}
+button.primary{background:var(--primary);color:#fff;border:0;padding:10px 15px;border-radius:8px;cursor:pointer}
+details{border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin:9px 0}summary{cursor:pointer;font-weight:600}
+.tag{display:inline-block;padding:3px 8px;border-radius:999px;background:#eef2ff;color:#304bc7;font-size:12px;margin:2px}
+.progress-wrap{height:7px;background:#dbe3f0;position:fixed;top:0;left:0;right:0;z-index:20}.progress{height:100%;width:0;background:#60a5fa}
+footer{background:#111827;color:#d1d5db;padding:35px 20px;text-align:center;margin-top:30px}
+@media(max-width:850px){.layout{grid-template-columns:1fr}nav{position:relative;top:auto}.section{padding:20px}}
+@media print{nav,.progress-wrap,.copy,button{display:none!important}.layout{display:block}.section{box-shadow:none;break-inside:avoid}header{color:#000;background:#fff;border-bottom:2px solid #000}}
+</style>
+</head>
+<body>
+<div class="progress-wrap"><div class="progress" id="progress"></div></div>
+<header>
+<div class="hero">
+<div class="badges"><span class="badge">Koding dan Kecerdasan Artifisial</span><span class="badge">Kelas X</span><span class="badge">Modul Pembelajaran</span></div>
+<h1>Algoritma, AI & Python</h1>
+<p>Dari cara manusia memecahkan masalah, menjadi algoritma yang terstruktur, divisualisasikan dengan flowchart, diterapkan dalam Python, lalu dikembangkan menjadi solusi sederhana berbasis kecerdasan artifisial.</p>
+</div>
+</header>
+
+<div class="layout">
+<nav>
+<strong>Daftar Materi</strong>
+<a class="navlink" href="#tujuan">Tujuan Pembelajaran</a>
+<a class="navlink" href="#algoritma">1. Konsep Algoritma</a>
+<a class="navlink" href="#flowchart">2. Flowchart</a>
+<a class="navlink" href="#seleksi">3. Percabangan</a>
+<a class="navlink" href="#sorting">4. Sorting</a>
+<a class="navlink" href="#ai">5. Klasifikasi & Klasterisasi</a>
+<a class="navlink" href="#python">6. Python</a>
+<a class="navlink" href="#debug">7. Debugging</a>
+<a class="navlink" href="#proyek">8. Proyek Akhir</a>
+<a class="navlink" href="#evaluasi">Evaluasi</a>
+</nav>
+
+<main>
+<section class="section" id="tujuan">
+<h2>Tujuan Pembelajaran</h2>
+<p class="lead">Setelah mempelajari modul ini, siswa diharapkan mampu menjelaskan, merancang, menguji, dan mengimplementasikan algoritma sederhana serta memahami dasar AI.</p>
+<div class="grid">
+<div class="card"><h4>🧠 Computational Thinking</h4><p>Memecah masalah, menemukan pola, menyederhanakan informasi, lalu menyusun langkah penyelesaian.</p></div>
+<div class="card"><h4>🔀 Logika</h4><p>Menggunakan kondisi, operator perbandingan, operator logika, dan pengulangan.</p></div>
+<div class="card"><h4>📊 Algoritma</h4><p>Membuat algoritma dengan bahasa natural, pseudocode, flowchart, dan kode.</p></div>
+<div class="card"><h4>💻 Python</h4><p>Membuat program sederhana menggunakan variabel, input, operasi, dan percabangan.</p></div>
+<div class="card"><h4>🤖 AI Dasar</h4><p>Membedakan klasifikasi dan klasterisasi serta memahami ide dasar K-Means dan Naive Bayes.</p></div>
+<div class="card"><h4>🐞 Debugging</h4><p>Mengidentifikasi syntax error, runtime error, dan logic error.</p></div>
+</div>
+</section>
+
+<section class="section" id="algoritma">
+<h2>1. Pengenalan Algoritma Dasar</h2>
+<h3>A. Apa Itu Algoritma?</h3>
+<p>Algoritma adalah <b>serangkaian langkah yang logis, sistematis, jelas, dan berhingga</b> untuk menyelesaikan masalah atau mencapai tujuan.</p>
+<div class="callout"><b>Inti konsep:</b> Algoritma bukan hanya milik komputer. Resep memasak, petunjuk memasang perangkat, prosedur meminjam buku, dan cara berangkat ke sekolah semuanya dapat dipandang sebagai algoritma.</div>
+
+<h3>Contoh: Algoritma Pergi ke Sekolah</h3>
+<ol><li>Bangun tidur.</li><li>Matikan alarm.</li><li>Mandi.</li><li>Memakai seragam.</li><li>Sarapan.</li><li>Menyiapkan tas.</li><li>Memeriksa waktu dan kondisi perjalanan.</li><li>Berangkat ke sekolah.</li></ol>
+<p>Algoritma menjadi lebih cerdas ketika dapat <b>mengambil keputusan</b>.</p>
+<pre><button class="copy">Salin</button>JIKA waktu_bangun &lt;= 05:30
+    mandi
+    sarapan
+    gunakan rute normal
+JIKA TIDAK
+    mandi lebih cepat
+    pertimbangkan sarapan di perjalanan
+    pilih rute tercepat</pre>
+
+<h3>B. Karakteristik Algoritma</h3>
+<table><tr><th>Karakteristik</th><th>Makna</th><th>Contoh</th></tr>
+<tr><td>Input</td><td>Data yang masuk jika diperlukan.</td><td>Nilai siswa.</td></tr>
+<tr><td>Output</td><td>Hasil yang dihasilkan.</td><td>Status Lulus.</td></tr>
+<tr><td>Definiteness</td><td>Setiap langkah harus jelas dan tidak ambigu.</td><td>"Tambahkan 10" lebih jelas daripada "proses nilainya".</td></tr>
+<tr><td>Finiteness</td><td>Algoritma harus berhenti setelah sejumlah langkah.</td><td>Program berhenti setelah semua data diproses.</td></tr>
+<tr><td>Effectiveness</td><td>Langkah dapat dilakukan secara nyata.</td><td>Hitung, bandingkan, tampilkan.</td></tr></table>
+
+<h3>C. Tiga Struktur Fundamental</h3>
+<div class="grid">
+<div class="card"><h4>1. Sequence</h4><p>Instruksi dijalankan berurutan.</p><pre>Input nilai
+Hitung rata-rata
+Tampilkan hasil</pre></div>
+<div class="card"><h4>2. Selection</h4><p>Program memilih tindakan berdasarkan kondisi.</p><pre>Jika nilai >= 75
+    Lulus
+Jika tidak
+    Tidak Lulus</pre></div>
+<div class="card"><h4>3. Iteration</h4><p>Instruksi diulang.</p><pre>Ulangi 5 kali:
+    tampilkan
+    "Belajar KKA"</pre></div>
+</div>
+
+<h3>D. Empat Bentuk Representasi</h3>
+<p><span class="tag">Bahasa Natural</span><span class="tag">Pseudocode</span><span class="tag">Flowchart</span><span class="tag">Program</span></p>
+<p>Satu masalah dapat memiliki representasi berbeda tetapi <b>logikanya tetap sama</b>. Inilah alasan algoritma perlu dipahami sebelum belajar sintaks bahasa pemrograman.</p>
+
+<h3>Aktivitas</h3>
+<details><summary>AP-K10-01 — Algoritma Perjalanan</summary><p>Tulis minimal 8 langkah dari rumah sampai sekolah. Tandai langkah yang berupa keputusan.</p></details>
+<details><summary>AP-K10-02 — Bangun Tepat Waktu vs Terlambat</summary><p>Buat dua alur. Tentukan kondisi, tindakan jika benar, dan tindakan jika salah.</p></details>
+<details><summary>Tantangan — Lupa Membawa Kartu Pelajar</summary><p>Rancang kondisi dan tindakan. Contoh: jika kartu tertinggal, siswa melapor kepada petugas/guru sesuai prosedur sekolah.</p></details>
+</section>
+
+<section class="section" id="flowchart">
+<h2>2. Implementasi Algoritma dalam Flowchart</h2>
+<p>Flowchart adalah representasi grafis algoritma. Dengan gambar, siswa dapat melihat urutan proses dan percabangan sebelum menulis program.</p>
+<div class="grid">
+<div class="card"><b>Oval</b><p>Start / End</p></div><div class="card"><b>Persegi Panjang</b><p>Process / proses</p></div>
+<div class="card"><b>Jajar Genjang</b><p>Input / Output</p></div><div class="card"><b>Belah Ketupat</b><p>Decision / keputusan</p></div>
+<div class="card"><b>Panah</b><p>Flow / arah aliran</p></div><div class="card"><b>Connector</b><p>Menghubungkan bagian alur.</p></div>
+</div>
+<h3>Contoh: Rata-rata Tiga Nilai</h3>
+<div class="flow">
+<div class="node start">START</div><div class="arrow">↓</div><div class="node io">Input nilai 1, 2, 3</div><div class="arrow">↓</div>
+<div class="node process">rata-rata = (n1+n2+n3)/3</div><div class="arrow">↓</div><div class="node io">Tampilkan rata-rata</div><div class="arrow">↓</div><div class="node start">END</div>
+</div>
+<h3>Flowchart Percabangan</h3>
+<div class="flow">
+<div class="node start">START</div><div class="arrow">↓</div><div class="node io">Input nilai</div><div class="arrow">↓</div>
+<div class="node decision"><span>nilai ≥ 75?</span></div>
+<div class="arrow">↙ &nbsp;&nbsp;&nbsp;&nbsp; ↘</div>
+<div style="display:flex;gap:90px"><div class="node process">LULUS</div><div class="node process">TIDAK LULUS</div></div>
+<div class="arrow">↘ &nbsp;&nbsp;&nbsp;&nbsp; ↙</div><div class="node start">END</div>
+</div>
+<div class="warning"><b>Kesalahan umum:</b> tidak memiliki Start/End, arah panah tidak jelas, decision hanya memiliki satu cabang, simbol tidak sesuai fungsi, proses terputus, atau perulangan tidak memiliki kondisi berhenti.</div>
+<details><summary>AP-K10-03 — Flowchart Rata-rata</summary><p>Buat flowchart menggunakan minimal 3 input nilai dan satu output rata-rata.</p></details>
+<details><summary>AP-K10-04 — Flowchart Puzzle</summary><p>Guru mengacak simbol dan instruksi. Kelompok menyusun urutan yang benar, kemudian menjelaskan alasan setiap posisi.</p></details>
+<details><summary>Tantangan — Kelayakan Mengikuti Ujian</summary><p>Buat flowchart yang menentukan boleh/tidaknya siswa mengikuti ujian berdasarkan persentase kehadiran, misalnya syarat kehadiran minimal 80%.</p></details>
+</section>
+
+<section class="section" id="seleksi">
+<h2>3. Logika Seleksi / Percabangan</h2>
+<p>Percabangan membuat komputer mampu memilih tindakan berdasarkan kondisi. Ini menjadi jembatan langsung dari algoritma menuju Python.</p>
+<h3>A. Konsep If–Else</h3>
+<pre><button class="copy">Salin</button>if hujan:
+    print("Bawa payung")
+else:
+    print("Tidak perlu payung")</pre>
+
+<h3>B. Operator Perbandingan</h3>
+<table><tr><th>Operator</th><th>Makna</th><th>Contoh</th></tr>
+<tr><td>&gt;</td><td>lebih besar</td><td>nilai &gt; 75</td></tr><tr><td>&lt;</td><td>lebih kecil</td><td>nilai &lt; 75</td></tr>
+<tr><td>&gt;=</td><td>lebih besar atau sama dengan</td><td>nilai &gt;= 75</td></tr><tr><td>&lt;=</td><td>lebih kecil atau sama dengan</td><td>nilai &lt;= 75</td></tr>
+<tr><td>==</td><td>sama dengan</td><td>nilai == 75</td></tr><tr><td>!=</td><td>tidak sama dengan</td><td>nilai != 75</td></tr></table>
+<div class="callout"><b>Perhatikan:</b> <span class="inline">=</span> biasanya digunakan untuk memberi nilai ke variabel, sedangkan <span class="inline">==</span> digunakan untuk membandingkan kesamaan.</div>
+
+<h3>C. Operator Logika</h3>
+<table><tr><th>Operator</th><th>Makna</th><th>Contoh</th></tr><tr><td>and</td><td>kedua kondisi harus benar</td><td>nilai &gt;= 75 and hadir &gt;= 80</td></tr><tr><td>or</td><td>minimal satu kondisi benar</td><td>izin == True or sakit == True</td></tr><tr><td>not</td><td>membalik nilai logika</td><td>not terlambat</td></tr></table>
+
+<h3>D. Nested If</h3>
+<pre><button class="copy">Salin</button>if nilai >= 75:
+    if kehadiran >= 80:
+        print("Lulus")
+    else:
+        print("Tidak lulus")
+else:
+    print("Tidak lulus")</pre>
+
+<h3>E. Truth Table</h3>
+<table><tr><th>Nilai</th><th>Kehadiran</th><th>Nilai ≥ 75 AND Kehadiran ≥ 80</th></tr>
+<tr><td>80</td><td>90</td><td>True</td></tr><tr><td>80</td><td>70</td><td>False</td></tr><tr><td>60</td><td>90</td><td>False</td></tr><tr><td>60</td><td>70</td><td>False</td></tr></table>
+
+<h3>Pengembangan: Kategori Nilai</h3>
+<pre><button class="copy">Salin</button>if nilai >= 90:
+    print("Sangat Baik")
+elif nilai >= 80:
+    print("Baik")
+elif nilai >= 75:
+    print("Cukup")
+else:
+    print("Belum Lulus")</pre>
+<p>Urutan kondisi penting. Program memeriksa dari atas ke bawah dan menjalankan cabang pertama yang terpenuhi.</p>
+</section>
+
+<section class="section" id="sorting">
+<h2>4. Perbandingan Algoritma Pengurutan</h2>
+<h3>A. Apa Itu Sorting?</h3>
+<p>Sorting adalah proses mengatur data berdasarkan aturan tertentu, misalnya ascending (kecil → besar) atau descending (besar → kecil).</p>
+<p><b>Data:</b> 70, 40, 90, 20, 60 → <b>Ascending:</b> 20, 40, 60, 70, 90</p>
+<h3>B. Selection Sort</h3>
+<p>Prinsip: cari nilai terkecil dari bagian yang belum terurut, letakkan di posisi berikutnya, lalu ulangi.</p>
+<pre>70 40 90 20 60
+↓ cari minimum = 20
+20 40 90 70 60
+↓ bagian berikutnya: 40
+20 40 90 70 60
+↓ cari minimum dari 90,70,60 = 60
+20 40 60 70 90</pre>
+<h3>C. Insertion Sort</h3>
+<p>Bayangkan menyusun kartu di tangan. Ambil satu data baru, lalu geser data yang lebih besar sampai ditemukan posisi yang tepat.</p>
+<pre>70
+70 40
+40 70
+40 70 90
+40 70 90 20
+20 40 70 90</pre>
+<h3>D. Perbandingan</h3>
+<table><tr><th>Selection Sort</th><th>Insertion Sort</th></tr><tr><td>Mencari nilai minimum.</td><td>Menyisipkan data ke posisi yang tepat.</td></tr><tr><td>Konsep pencarian minimum kuat.</td><td>Banyak menggunakan pergeseran.</td></tr><tr><td>Sederhana untuk pembelajaran.</td><td>Efektif ketika data sudah hampir terurut.</td></tr></table>
+<div class="callout"><b>Pertanyaan berpikir kritis:</b> Apakah algoritma dengan langkah yang terlihat paling sedikit selalu menjadi algoritma terbaik? Jelaskan dengan mempertimbangkan jumlah data, kondisi data, waktu, memori, dan kemudahan implementasi.</div>
+<details><summary>AP-K10-08 — Praktik Sorting</summary><p>Urutkan 72, 15, 43, 90, 31, 8 secara manual menggunakan Selection Sort dan Insertion Sort. Catat perubahan setiap langkah dan bandingkan prosesnya.</p></details>
+</section>
+
+<section class="section" id="ai">
+<h2>5. Algoritma AI: Klasifikasi & Klasterisasi</h2>
+<p>Di tingkat awal, AI dapat dipahami sebagai bidang yang memungkinkan komputer mempelajari pola dari data untuk menghasilkan prediksi, keputusan, atau pengelompokan.</p>
+<div class="grid">
+<div class="card"><h3>Klasifikasi</h3><p>Data memiliki <b>label</b>. Model belajar dari contoh yang sudah diketahui kategorinya.</p><p>Contoh: email → Spam / Bukan Spam.</p></div>
+<div class="card"><h3>Klasterisasi</h3><p>Data tidak memiliki label. Algoritma mencari kelompok berdasarkan kemiripan.</p><p>Contoh: mengelompokkan siswa berdasarkan pola hobi.</p></div>
+</div>
+<h3>K-Means secara sederhana</h3>
+<ol><li>Tentukan jumlah cluster (K).</li><li>Tentukan centroid awal.</li><li>Hitung jarak setiap data ke centroid.</li><li>Masukkan data ke centroid terdekat.</li><li>Hitung ulang centroid.</li><li>Ulangi sampai pembagian relatif stabil.</li></ol>
+<table><tr><th>Siswa</th><th>Olahraga/minggu</th><th>Waktu belajar/jam</th></tr><tr><td>A</td><td>8</td><td>7</td></tr><tr><td>B</td><td>7</td><td>8</td></tr><tr><td>C</td><td>2</td><td>3</td></tr><tr><td>D</td><td>3</td><td>2</td></tr></table>
+<p>Secara intuitif, A dan B memiliki pola yang lebih mirip satu sama lain, sedangkan C dan D juga lebih mirip satu sama lain.</p>
+<h3>Makna Jarak</h3>
+<p>Untuk dua variabel, jarak Euclidean dapat ditulis:</p>
+<div class="callout" style="text-align:center;font-size:20px"><b>d = √((x₁ − x₂)² + (y₁ − y₂)²)</b></div>
+<p>Tidak perlu menghafalkan rumus pada tahap awal. Yang penting: <b>jarak kecil berarti data lebih dekat/mirip dalam ruang fitur yang digunakan.</b></p>
+
+<h3>Naive Bayes</h3>
+<p>Naive Bayes adalah algoritma klasifikasi yang menggunakan probabilitas. Contoh: berdasarkan kata-kata yang muncul pada email, sistem memperkirakan apakah email tersebut Spam atau Bukan Spam.</p>
+<div class="flow"><div class="node io">Data sebelumnya</div><div class="arrow">↓</div><div class="node process">Hitung probabilitas</div><div class="arrow">↓</div><div class="node process">Bandingkan kemungkinan</div><div class="arrow">↓</div><div class="node start">Tentukan kelas</div></div>
+<div class="tip callout"><b>Ingat:</b> K-Means = mengelompokkan tanpa label. Naive Bayes = mengklasifikasikan menggunakan probabilitas dan data berlabel.</div>
+<details><summary>Aktivitas — Simulasi K-Means</summary><p>Pilih dua variabel sederhana dari data siswa, misalnya waktu belajar dan waktu bermain. Tentukan dua centroid, hitung jarak sederhana, kelompokkan data, lalu hitung centroid baru.</p></details>
+</section>
+
+<section class="section" id="python">
+<h2>6. Pengenalan Pemrograman Teks — Python</h2>
+<p>Setelah algoritma dipahami, siswa mulai menuliskannya menggunakan bahasa pemrograman.</p>
+<h3>A. Mengapa Python?</h3>
+<p>Python memiliki sintaks relatif sederhana, banyak digunakan di bidang otomasi, data, web, sains, dan AI. Kesederhanaan sintaks membuatnya cocok untuk latihan konsep pemrograman.</p>
+<h3>B. Hello World</h3>
+<pre><button class="copy">Salin</button>print("Hello, World!")</pre>
+<h3>C. Variabel dan Tipe Data</h3>
+<pre><button class="copy">Salin</button>nama = "Charly"       # string
+umur = 42               # integer
+tinggi = 168.5          # float
+sudah_login = True      # boolean</pre>
+<table><tr><th>Tipe</th><th>Contoh</th><th>Kegunaan</th></tr><tr><td>String</td><td>"Budi"</td><td>Teks</td></tr><tr><td>Integer</td><td>42</td><td>Bilangan bulat</td></tr><tr><td>Float</td><td>168.5</td><td>Bilangan desimal</td></tr><tr><td>Boolean</td><td>True / False</td><td>Nilai logika</td></tr></table>
+<h3>D. Input</h3>
+<pre><button class="copy">Salin</button>nama = input("Nama kamu: ")
+print("Halo", nama)</pre>
+<p>Input dari <span class="inline">input()</span> pada dasarnya berupa teks. Karena itu, untuk angka biasanya perlu konversi.</p>
+<h3>E. Operasi Matematika</h3>
+<pre><button class="copy">Salin</button>nilai1 = 80
+nilai2 = 90
+rata_rata = (nilai1 + nilai2) / 2
+print(rata_rata)</pre>
+<h3>F. Percabangan</h3>
+<pre><button class="copy">Salin</button>nilai = int(input("Nilai: "))
+
+if nilai >= 75:
+    print("Lulus")
+else:
+    print("Tidak lulus")</pre>
+<h3>G. Python vs C</h3>
+<table><tr><th>Konsep</th><th>Python</th><th>C</th></tr><tr><td>Menampilkan teks</td><td><code>print("Hello")</code></td><td><code>printf("Hello");</code></td></tr><tr><td>Algoritma</td><td colspan="2">Dapat sama, walaupun sintaks berbeda.</td></tr></table>
+<p>Bahasa pemrograman memiliki sintaks, aturan, struktur, tipe data, dan operator. <b>Yang paling penting bagi pemula adalah memahami logika terlebih dahulu.</b></p>
+
+<h3>Latihan Bertahap</h3>
+<ol><li>Hello World.</li><li>Program biodata.</li><li>Menghitung luas.</li><li>Menghitung rata-rata.</li><li>Menentukan lulus/tidak lulus.</li></ol>
+<h3>Mini Challenge — Nilai Akhir</h3>
+<pre><button class="copy">Salin</button>tugas = float(input("Nilai tugas: "))
+uts = float(input("Nilai UTS: "))
+uas = float(input("Nilai UAS: "))
+
+nilai_akhir = (tugas + uts + uas) / 3
+
+print("Nilai akhir:", nilai_akhir)
+
+if nilai_akhir >= 75:
+    print("Lulus")
+else:
+    print("Belum lulus")</pre>
+</section>
+
+<section class="section" id="debug">
+<h2>7. Analisis Kesalahan & Debugging</h2>
+<p>Debugging bukan sekadar mencari typo. Debugging adalah proses sistematis untuk menemukan penyebab masalah, memperbaiki program, dan menguji kembali hasilnya.</p>
+<div class="grid">
+<div class="card"><h4>Syntax Error</h4><p>Melanggar aturan penulisan bahasa.</p><pre>print("Hello"</pre><p class="small">Kurang tanda tutup <code>)</code>.</p></div>
+<div class="card"><h4>Runtime Error</h4><p>Program dapat ditulis tetapi gagal saat dijalankan.</p><pre>angka = int(input())
+# input: abc</pre><p class="small">"abc" tidak dapat diubah menjadi integer.</p></div>
+<div class="card"><h4>Logic Error</h4><p>Program berjalan tetapi hasilnya tidak sesuai aturan.</p><pre>if nilai > 80:
+    print("Lulus")</pre><p class="small">Jika syarat sebenarnya ≥ 75, logikanya salah.</p></div>
+</div>
+<h3>Siklus Debugging</h3>
+<div class="flow"><div class="node start">Jalankan Program</div><div class="arrow">↓</div><div class="node process">Temukan Masalah</div><div class="arrow">↓</div><div class="node process">Cari Penyebab</div><div class="arrow">↓</div><div class="node process">Perbaiki Kode</div><div class="arrow">↓</div><div class="node process">Uji Kembali</div></div>
+<div class="callout"><b>Hubungan dengan Computational Thinking:</b> debugging melatih decomposition (memecah masalah), pattern recognition (mencari pola), abstraction (fokus pada bagian penting), dan algorithmic thinking (menentukan langkah perbaikan).</div>
+<details><summary>Latihan Debugging 1</summary><pre>nilai = 75
+if nilai > 75:
+    print("Lulus")
+else:
+    print("Tidak lulus")</pre><p>Jika aturan kelulusan adalah nilai ≥ 75, bagian mana yang perlu diperbaiki?</p></details>
+<details><summary>Latihan Debugging 2</summary><pre>umur = int(input("Umur: "))
+print("Umur kamu " + umur)</pre><p>Temukan kemungkinan error tipe data ketika program dijalankan.</p></details>
+</section>
+
+<section class="section" id="proyek">
+<h2>8. Proyek Akhir Bab — “Asisten Sekolah”</h2>
+<p>Proyek ini menggabungkan algoritma, percabangan, keyword matching, input-output, dan debugging menjadi sebuah chatbot sederhana.</p>
+<h3>Level 1 — Keyword Dasar</h3>
+<pre><button class="copy">Salin</button>pertanyaan = input("Apa yang ingin kamu tanyakan? ").lower()
+
+if "perpustakaan" in pertanyaan:
+    print("Perpustakaan berada di lantai 1.")
+elif "kantin" in pertanyaan:
+    print("Kantin berada di belakang gedung utama.")
+elif "lab" in pertanyaan:
+    print("Laboratorium komputer berada di gedung praktik.")
+else:
+    print("Maaf, saya belum memahami pertanyaan tersebut.")</pre>
+<h3>Level 2 — Tambah Informasi</h3>
+<p>Tambahkan keyword: jam masuk, ruang guru, UKS, toilet, lapangan, ruang praktik, dan ruang kepala sekolah.</p>
+<h3>Level 3 — Variasi Pertanyaan</h3>
+<p>Program seharusnya mengenali beberapa kalimat yang memiliki keyword sama, misalnya:</p>
+<ul><li>“Di mana kantin?”</li><li>“Kantin dimana?”</li><li>“Lokasi kantin?”</li></ul>
+<p>Ketiganya dapat diproses dengan pencarian keyword <span class="inline">"kantin" in pertanyaan</span>.</p>
+<h3>Level 4 — Percabangan Lebih Kompleks</h3>
+<p>Tambahkan kategori pertanyaan dan jawaban berbeda berdasarkan lebih dari satu kondisi.</p>
+<h3>Level 5 — Peer Debugging</h3>
+<p>Tukar program dengan kelompok lain. Kelompok penerima harus menemukan minimal satu bug, menjelaskan penyebabnya, memperbaikinya, dan menguji ulang.</p>
+
+<h3>Rubrik Proyek</h3>
+<table><tr><th>Aspek</th><th>Indikator</th></tr><tr><td>Algoritma</td><td>Alur logis dan memiliki kondisi yang jelas.</td></tr><tr><td>Kode</td><td>Program dapat dijalankan dan menggunakan struktur Python dengan benar.</td></tr><tr><td>Fitur</td><td>Memiliki beberapa keyword dan variasi pertanyaan.</td></tr><tr><td>Debugging</td><td>Dapat menemukan dan menjelaskan kesalahan.</td></tr><tr><td>Kreativitas</td><td>Informasi dan respons dikembangkan sesuai lingkungan sekolah.</td></tr><tr><td>Presentasi</td><td>Dapat menjelaskan algoritma dan cara kerja program.</td></tr></table>
+<div class="warning callout"><b>Catatan AI:</b> Chatbot proyek ini belum menggunakan machine learning. Ia menggunakan aturan/keyword yang ditulis manusia. Ini justru penting agar siswa memahami perbedaan antara program berbasis aturan dan sistem AI yang belajar dari data.</div>
+</section>
+
+<section class="section" id="evaluasi">
+<h2>Evaluasi Interaktif</h2>
+<p>Jawab pertanyaan berikut. Pilih satu jawaban untuk setiap soal, lalu tekan <b>Periksa Nilai</b>.</p>
+
+<div class="quiz"><b>1. Ciri algoritma yang memastikan setiap langkah jelas adalah...</b>
+<label><input type="radio" name="q1" value="a"> A. Input</label><label><input type="radio" name="q1" value="b"> B. Definiteness</label><label><input type="radio" name="q1" value="c"> C. Output</label><label><input type="radio" name="q1" value="d"> D. Iteration</label></div>
+<div class="quiz"><b>2. Struktur yang digunakan untuk memilih tindakan berdasarkan kondisi adalah...</b>
+<label><input type="radio" name="q2" value="a"> A. Sequence</label><label><input type="radio" name="q2" value="b"> B. Selection</label><label><input type="radio" name="q2" value="c"> C. Sorting</label><label><input type="radio" name="q2" value="d"> D. Output</label></div>
+<div class="quiz"><b>3. Operator Python untuk membandingkan “sama dengan” adalah...</b>
+<label><input type="radio" name="q3" value="a"> A. =</label><label><input type="radio" name="q3" value="b"> B. !=</label><label><input type="radio" name="q3" value="c"> C. ==</label><label><input type="radio" name="q3" value="d"> D. >=</label></div>
+<div class="quiz"><b>4. Algoritma yang bertujuan mengelompokkan data tanpa label adalah...</b>
+<label><input type="radio" name="q4" value="a"> A. K-Means</label><label><input type="radio" name="q4" value="b"> B. Naive Bayes</label><label><input type="radio" name="q4" value="c"> C. Selection Sort</label><label><input type="radio" name="q4" value="d"> D. Flowchart</label></div>
+<div class="quiz"><b>5. Program berjalan tetapi hasilnya salah karena kondisi yang ditulis tidak sesuai aturan. Ini disebut...</b>
+<label><input type="radio" name="q5" value="a"> A. Syntax Error</label><label><input type="radio" name="q5" value="b"> B. Runtime Error</label><label><input type="radio" name="q5" value="c"> C. Logic Error</label><label><input type="radio" name="q5" value="d"> D. Input Error</label></div>
+<button class="primary" onclick="checkQuiz()">Periksa Nilai</button>
+<div id="score" class="result"></div>
+
+<h3>Refleksi</h3>
+<ol>
+<li>Apa perbedaan algoritma dan program?</li>
+<li>Mengapa flowchart dapat membantu sebelum menulis kode?</li>
+<li>Kapan sebuah kondisi <span class="inline">and</span> menghasilkan True?</li>
+<li>Apa perbedaan klasifikasi dan klasterisasi?</li>
+<li>Mengapa debugging penting dalam pengembangan program?</li>
+</ol>
+</section>
+
+<section class="section">
+<h2>Ringkasan Besar</h2>
+<div class="grid">
+<div class="card"><b>Masalah</b><p>Identifikasi apa yang ingin diselesaikan.</p></div>
+<div class="card"><b>Algoritma</b><p>Susun langkah logis dan berhingga.</p></div>
+<div class="card"><b>Flowchart</b><p>Visualisasikan alur dan keputusan.</p></div>
+<div class="card"><b>Python</b><p>Implementasikan algoritma dalam kode.</p></div>
+<div class="card"><b>AI Dasar</b><p>Kenali pola, klasifikasi, dan pengelompokan data.</p></div>
+<div class="card"><b>Debugging</b><p>Uji, temukan masalah, perbaiki, dan evaluasi.</p></div>
+</div>
+<div class="callout tip"><b>Pesan utama:</b> Jangan menghafal kode terlebih dahulu. Biasakan bertanya: <i>“Masalahnya apa? Data apa yang masuk? Prosesnya bagaimana? Kondisinya apa? Hasil yang diharapkan apa?”</i> Setelah logikanya jelas, kode menjadi jauh lebih mudah ditulis.</div>
+</section>
+</main>
+</div>
+
+<footer>
+<b>Koding dan Kecerdasan Artifisial — Kelas X</b><br>
+Modul pengantar algoritma, computational thinking, AI dasar, Python, dan debugging.
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+ const h=document.documentElement;
+ const p=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
+ document.getElementById('progress').style.width=p+'%';
+});
+document.querySelectorAll('.copy').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+   const code=btn.parentElement.innerText.replace('Salin','').trim();
+   navigator.clipboard?.writeText(code);
+   const old=btn.textContent;btn.textContent='Tersalin!';
+   setTimeout(()=>btn.textContent=old,1200);
+ });
+});
+function checkQuiz(){
+ const answers={q1:'b',q2:'b',q3:'c',q4:'a',q5:'c'};
+ let score=0,answered=0;
+ for(const q in answers){
+   const el=document.querySelector('input[name="'+q+'"]:checked');
+   if(el){answered++;if(el.value===answers[q])score++;}
+ }
+ const box=document.getElementById('score');
+ box.textContent=`Skor: ${score}/5 (${answered} soal dijawab).`;
+ box.style.color=score>=4?'#16834b':score>=3?'#a56600':'#b42318';
+}
+</script>
+</body>
+</html>
